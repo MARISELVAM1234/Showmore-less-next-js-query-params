@@ -1,0 +1,60 @@
+1.show more and show less based on condition :
+
+const [mainBlogshow, setmainBlogshow] = useState(false);
+
+ {data.content.blocks?.map((item, index) => {
+                        if (mainBlogshow === true) {
+                          return (
+                            <p
+                              key={index}
+                              className={
+                                item.type === "Header" ? "header" : "paragraph"
+                              }
+                            >
+                              {item.data.text}
+                            </p>
+                          );
+                        } else {
+                          if (index < 4) {
+                            return (
+                              <p
+                                key={index}
+                                className={
+                                  item.type === "Header"
+                                    ? "header"
+                                    : "paragraph"
+                                }
+                              >
+                                {item.data.text}
+                              </p>
+                            );
+                          }
+                        }
+                      })}
+                      
+                      
+ 2.params  used in next js
+ 
+ data is id
+  const featureData = (data) => {
+    setFeatureBlogshowId(data);
+    router.push({
+      		pathname: `/blog-detail`,
+      		query: {data}
+      	});
+  };                     
+   //get url id value using router
+  const router = useRouter();
+  const featureID = router.query;
+  
+  //filter the data
+    const blogDetailData = resultData.filter((data) => {
+    return data.id === parseInt(featureID.data);
+  });
+  
+  
+  
+  
+  
+  
+  
